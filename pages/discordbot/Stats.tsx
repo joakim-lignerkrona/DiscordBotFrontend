@@ -39,7 +39,7 @@ export default function Stats({ highScore }) {
     setListedLabels(highScore.map((score) => score.userName));
 
     return () => {};
-  }, []);
+  }, [highScore]);
 
   const onCheck = useCallback(
     (userIDs: string[]) => {
@@ -114,7 +114,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   console.log("====================================");
   console.log("getting server side props");
   console.log("====================================");
-  getStats();
   let data = await getStats();
   return {
     props: { highScore: data },
